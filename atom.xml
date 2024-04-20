@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ericxduan.github.io</id>
+    <title>Eric Duan</title>
+    <updated>2024-04-20T08:25:02.474Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://ericxduan.github.io"/>
+    <link rel="self" href="https://ericxduan.github.io/atom.xml"/>
+    <subtitle>“人呐就都不知道 自己就不可以预料”</subtitle>
+    <logo>https://ericxduan.github.io/images/avatar.png</logo>
+    <icon>https://ericxduan.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, Eric Duan</rights>
+    <entry>
+        <title type="html"><![CDATA[SQL - Common Interview Questions and Answers for preparation]]></title>
+        <id>https://ericxduan.github.io/post/sql-common-interview-questions-and-answers-for-preparation/</id>
+        <link href="https://ericxduan.github.io/post/sql-common-interview-questions-and-answers-for-preparation/">
+        </link>
+        <updated>2024-04-20T10:53:10.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="basic-sql-interview-questions-and-answers">Basic SQL Interview Questions and Answers</h3>
+<ol>
+<li>
+<p><strong>What is SQL?</strong></p>
+<ul>
+<li>SQL (Structured Query Language) is a standardized programming language used for managing and manipulating relational databases. It allows users to query, insert, update, and delete data, as well as create and modify schema objects like tables, indexes, and views.</li>
+</ul>
+</li>
+<li>
+<p><strong>What are the different types of SQL commands?</strong></p>
+<ul>
+<li>SQL commands are categorized into four types:
+<ul>
+<li><strong>DDL (Data Definition Language)</strong>: Commands that define the database structure. Examples include CREATE, ALTER, DROP.</li>
+<li><strong>DML (Data Manipulation Language)</strong>: Commands used for manipulating data. Examples are INSERT, UPDATE, DELETE.</li>
+<li><strong>DCL (Data Control Language)</strong>: Commands related to permissions and access controls. Examples are GRANT, REVOKE.</li>
+<li><strong>TCL (Transaction Control Language)</strong>: Commands that manage transactions in the database. Examples include COMMIT, ROLLBACK.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>What is a JOIN and what are the different types?</strong></p>
+<ul>
+<li>A JOIN clause is used to combine rows from two or more tables, based on a related column between them. Different types of JOINs include:
+<ul>
+<li><strong>INNER JOIN</strong>: Returns rows when there is at least one match in both tables.</li>
+<li><strong>LEFT JOIN (or LEFT OUTER JOIN)</strong>: Returns all rows from the left table, and the matched rows from the right table.</li>
+<li><strong>RIGHT JOIN (or RIGHT OUTER JOIN)</strong>: Returns all rows from the right table, and the matched rows from the left table.</li>
+<li><strong>FULL JOIN (or FULL OUTER JOIN)</strong>: Returns rows when there is a match in one of the tables.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="intermediate-sql-interview-questions-and-answers">Intermediate SQL Interview Questions and Answers</h3>
+<ol>
+<li>
+<p><strong>Explain the GROUP BY clause with an example.</strong></p>
+<ul>
+<li>The <code>GROUP BY</code> clause is used with aggregate functions like COUNT, MAX, MIN, SUM, AVG to group the result set by one or more columns. For example, to count the number of employees in each department:<pre><code class="language-sql">SELECT DepartmentID, COUNT(EmployeeID) AS NumberOfEmployees
+FROM Employees
+GROUP BY DepartmentID;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>What are indexes and why are they used?</strong></p>
+<ul>
+<li>Indexes are special lookup tables that the database search engine can use to speed up data retrieval. Simply put, an index in a database is akin to an index in a book. They are used to quickly locate and access the data without having to search every row in a database table every time a database table is accessed.</li>
+</ul>
+</li>
+<li>
+<p><strong>How do you optimize SQL queries?</strong></p>
+<ul>
+<li>Query optimization can involve several strategies, such as selecting only the necessary columns instead of using <code>SELECT *</code>, using joins instead of subqueries where applicable, indexing critical columns, avoiding unnecessary calculations, and analyzing query execution plans to identify bottlenecks.</li>
+</ul>
+</li>
+</ol>
+<h3 id="advanced-sql-interview-questions-and-answers">Advanced SQL Interview Questions and Answers</h3>
+<ol>
+<li>
+<p><strong>Discuss window functions and provide examples where they might be used.</strong></p>
+<ul>
+<li>Window functions perform a calculation across a set of table rows that are somehow related to the current row. Unlike aggregate functions, window functions do not collapse the rows into a single output row. Examples include <code>ROW_NUMBER()</code>, <code>RANK()</code>, <code>LEAD()</code>, <code>LAG()</code>, and they can be used for tasks such as ranking, running totals, or accessing the value of another row at a specified offset.</li>
+</ul>
+</li>
+<li>
+<p><strong>What are Common Table Expressions (CTEs) and how do they differ from temporary tables?</strong></p>
+<ul>
+<li>A CTE (Common Table Expression) is a temporary result set that you can reference within a SELECT, INSERT, UPDATE, or DELETE statement. CTEs are non-persistent and exist only during the execution of the query. Unlike temporary tables, CTEs are not stored on disk and do not incur the overhead associated with creating and managing temporary tables. They are useful for creating recursive queries, and simplifying complex queries.</li>
+</ul>
+</li>
+<li>
+<p><strong>How do you secure data in SQL databases?</strong></p>
+<ul>
+<li>Securing data in SQL databases involves implementing measures like encryption for data at rest and in transit, using secure connections (like SSL/TLS), managing user access controls diligently (principle of least privilege), regularly updating and patching the database software, and monitoring for unusual access patterns or security breaches.</li>
+</ul>
+</li>
+</ol>
+<h3 id="practical-sql-task-example">Practical SQL Task Example</h3>
+<ul>
+<li>
+<p><strong>Given a table <code>sales (product_id INT, sale_date DATE, quantity INT)</code>, write a query to find the top-selling product for each month.</strong></p>
+<pre><code class="language-sql">WITH MonthlySales AS (
+  SELECT
+    product_id,
+    EXTRACT(YEAR FROM sale_date) AS sale_year,
+    EXTRACT(MONTH FROM sale_date) AS sale_month,
+    SUM(quantity) AS total_quantity
+  FROM sales
+  GROUP BY product_id, sale_year, sale_month
+),
+RankedSales AS (
+  SELECT</code></pre>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Victorian coronavirus (COVID-19) data]]></title>
+        <id>https://ericxduan.github.io/post/victorian-coronavirus-covid-19-data/</id>
+        <link href="https://ericxduan.github.io/post/victorian-coronavirus-covid-19-data/">
+        </link>
+        <updated>2020-09-03T18:36:08.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>Victorian coronavirus (COVID-19) data</strong></p>
+<figure data-type="image" tabindex="1"><img src="https://ericxduan.github.io/post-images/1599744391064.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://ericxduan.github.io/post-images/1599744638253.png" alt="" loading="lazy"></figure>
+<p><a> https://www.dhhs.vic.gov.au/victorian-coronavirus-covid-19-data </a><br>
+<a> https://www.covid19data.com.au/ </a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[👋 READ.ME 欢迎]]></title>
+        <id>https://ericxduan.github.io/post/Home Page/</id>
+        <link href="https://ericxduan.github.io/post/Home Page/">
+        </link>
+        <updated>2020-08-15T03:00:00.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p>👏  **欢迎 ** ！<br>
+✍️  <strong>This website is still under construction</strong></p>
+<p><a href="https://github.com/getgridea/gridea">Github</a><br>
+<a href="https://gridea.dev/">Gridea 主页</a><br>
+<a href="https://fehey.com/">示例网站</a></p>
+<h2 id=""></h2>
+<p>特性👇<br>
+📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
+<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
+<p>🏷️  你可以对文章进行标签分组</p>
+<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
+<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
+<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
+<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
+<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
+<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
+<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
+<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
+<p>未来，它一定会成为你离不开的伙伴</p>
+<p>尽情发挥你的才华吧！</p>
+<p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+</feed>

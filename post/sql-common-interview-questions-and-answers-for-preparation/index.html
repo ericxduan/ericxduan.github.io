@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>SQL - Common Interview Questions and Answers for preparation | Eric Duan</title>
+<meta name="description" content="“人呐就都不知道 自己就不可以预料”">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://ericxduan.github.io/favicon.ico?v=1713601484966">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://ericxduan.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://ericxduan.github.io">
+        <img class="avatar" src="https://ericxduan.github.io/images/avatar.png?v=1713601484966" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://ericxduan.github.io">
+        <h1 class="site-title">Eric Duan</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">SQL - Common Interview Questions and Answers for preparation</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 20-04-2024</span>
+            
+          </div>
+          <div class="post-content">
+            <h3 id="basic-sql-interview-questions-and-answers">Basic SQL Interview Questions and Answers</h3>
+<ol>
+<li>
+<p><strong>What is SQL?</strong></p>
+<ul>
+<li>SQL (Structured Query Language) is a standardized programming language used for managing and manipulating relational databases. It allows users to query, insert, update, and delete data, as well as create and modify schema objects like tables, indexes, and views.</li>
+</ul>
+</li>
+<li>
+<p><strong>What are the different types of SQL commands?</strong></p>
+<ul>
+<li>SQL commands are categorized into four types:
+<ul>
+<li><strong>DDL (Data Definition Language)</strong>: Commands that define the database structure. Examples include CREATE, ALTER, DROP.</li>
+<li><strong>DML (Data Manipulation Language)</strong>: Commands used for manipulating data. Examples are INSERT, UPDATE, DELETE.</li>
+<li><strong>DCL (Data Control Language)</strong>: Commands related to permissions and access controls. Examples are GRANT, REVOKE.</li>
+<li><strong>TCL (Transaction Control Language)</strong>: Commands that manage transactions in the database. Examples include COMMIT, ROLLBACK.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>What is a JOIN and what are the different types?</strong></p>
+<ul>
+<li>A JOIN clause is used to combine rows from two or more tables, based on a related column between them. Different types of JOINs include:
+<ul>
+<li><strong>INNER JOIN</strong>: Returns rows when there is at least one match in both tables.</li>
+<li><strong>LEFT JOIN (or LEFT OUTER JOIN)</strong>: Returns all rows from the left table, and the matched rows from the right table.</li>
+<li><strong>RIGHT JOIN (or RIGHT OUTER JOIN)</strong>: Returns all rows from the right table, and the matched rows from the left table.</li>
+<li><strong>FULL JOIN (or FULL OUTER JOIN)</strong>: Returns rows when there is a match in one of the tables.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="intermediate-sql-interview-questions-and-answers">Intermediate SQL Interview Questions and Answers</h3>
+<ol>
+<li>
+<p><strong>Explain the GROUP BY clause with an example.</strong></p>
+<ul>
+<li>The <code>GROUP BY</code> clause is used with aggregate functions like COUNT, MAX, MIN, SUM, AVG to group the result set by one or more columns. For example, to count the number of employees in each department:<pre><code class="language-sql">SELECT DepartmentID, COUNT(EmployeeID) AS NumberOfEmployees
+FROM Employees
+GROUP BY DepartmentID;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>What are indexes and why are they used?</strong></p>
+<ul>
+<li>Indexes are special lookup tables that the database search engine can use to speed up data retrieval. Simply put, an index in a database is akin to an index in a book. They are used to quickly locate and access the data without having to search every row in a database table every time a database table is accessed.</li>
+</ul>
+</li>
+<li>
+<p><strong>How do you optimize SQL queries?</strong></p>
+<ul>
+<li>Query optimization can involve several strategies, such as selecting only the necessary columns instead of using <code>SELECT *</code>, using joins instead of subqueries where applicable, indexing critical columns, avoiding unnecessary calculations, and analyzing query execution plans to identify bottlenecks.</li>
+</ul>
+</li>
+</ol>
+<h3 id="advanced-sql-interview-questions-and-answers">Advanced SQL Interview Questions and Answers</h3>
+<ol>
+<li>
+<p><strong>Discuss window functions and provide examples where they might be used.</strong></p>
+<ul>
+<li>Window functions perform a calculation across a set of table rows that are somehow related to the current row. Unlike aggregate functions, window functions do not collapse the rows into a single output row. Examples include <code>ROW_NUMBER()</code>, <code>RANK()</code>, <code>LEAD()</code>, <code>LAG()</code>, and they can be used for tasks such as ranking, running totals, or accessing the value of another row at a specified offset.</li>
+</ul>
+</li>
+<li>
+<p><strong>What are Common Table Expressions (CTEs) and how do they differ from temporary tables?</strong></p>
+<ul>
+<li>A CTE (Common Table Expression) is a temporary result set that you can reference within a SELECT, INSERT, UPDATE, or DELETE statement. CTEs are non-persistent and exist only during the execution of the query. Unlike temporary tables, CTEs are not stored on disk and do not incur the overhead associated with creating and managing temporary tables. They are useful for creating recursive queries, and simplifying complex queries.</li>
+</ul>
+</li>
+<li>
+<p><strong>How do you secure data in SQL databases?</strong></p>
+<ul>
+<li>Securing data in SQL databases involves implementing measures like encryption for data at rest and in transit, using secure connections (like SSL/TLS), managing user access controls diligently (principle of least privilege), regularly updating and patching the database software, and monitoring for unusual access patterns or security breaches.</li>
+</ul>
+</li>
+</ol>
+<h3 id="practical-sql-task-example">Practical SQL Task Example</h3>
+<ul>
+<li>
+<p><strong>Given a table <code>sales (product_id INT, sale_date DATE, quantity INT)</code>, write a query to find the top-selling product for each month.</strong></p>
+<pre><code class="language-sql">WITH MonthlySales AS (
+  SELECT
+    product_id,
+    EXTRACT(YEAR FROM sale_date) AS sale_year,
+    EXTRACT(MONTH FROM sale_date) AS sale_month,
+    SUM(quantity) AS total_quantity
+  FROM sales
+  GROUP BY product_id, sale_year, sale_month
+),
+RankedSales AS (
+  SELECT</code></pre>
+</li>
+</ul>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://ericxduan.github.io/post/victorian-coronavirus-covid-19-data/">
+              <h3 class="post-title">
+                下一篇：Victorian coronavirus (COVID-19) data
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">“人呐就都不知道 自己就不可以预料”</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://weibo.com/233973397"></a> &ensp; <a href="mailto:x@ericduan.com">Send me an email</a>  | <a class="rss" href="https://ericxduan.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
